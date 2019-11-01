@@ -1,7 +1,7 @@
 # readNCDB
 Read the NCDB PUF data file in R by parsing the stata .do file
 
-Adapted from code [https://github.com/bokov/kc_ncdb](Alex Bokov PhD)
+Adapted from code [Alex Bokov PhD](https://github.com/bokov/kc_ncdb)
 
 Currently, the code is quite crude and requires some manual intervention outlined below to direct it to the correct files, tell it what to save and indicate which levels to not map. I wanted to share in case it is of use to others.
 
@@ -42,6 +42,10 @@ write_rds(data, path = here::here(datafolder,"data.rdata"))
 write_rds(dict, path = here::here(datafolder,"dict.rdata"))
 write_rds(dat1, path = here::here(datafolder,"labeled_data.rdata"))
 ```
+
+## NCDB Data Dictionaries
+- [Main NCDB Data Dictionary](http://ncdbpuf.facs.org/) (note -- in my experience, for some reason this website frequently has the connection time out)
+- [CS_SITESPECIFIC_CODEs](http://web2.facs.org/cstage0205/schemalist.html)
 
 ## Packages used
 Requires the `R` packages `tidyverse` and `here`
