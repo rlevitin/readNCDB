@@ -1,10 +1,11 @@
 # readNCDB
-Read the NCDB PUF file in R by parsing the stata .do file
+Read the NCDB PUF data file in R by parsing the stata .do file
 
-Adapted from code Alex Bokov PhD (github.com/bokov).
-Currently, the code is quite crude and requires manual intervention based on your local system set up, but I wanted to share in case it is of use to others.
+Adapted from code [https://github.com/bokov/kc_ncdb](Alex Bokov PhD)
 
-The code parses the .do file to determine how to read the .dat file as a fixed-width file. It also parses the .do file to construct a dictionary structure which used to label the variables as factors.
+Currently, the code is quite crude and requires some manual intervention outlined below to direct it to the correct files, tell it what to save and indicate which levels to not map. I wanted to share in case it is of use to others.
+
+The code parses the `.do` file to determine the fixed-width limits for each variable in the `.dat` file. It also parses the `.do` file to construct a dataframe dictionary which is used to label the variables as factors.
 
 ## Use instructions
 Download the readNCDB.R file into your project directory 
@@ -21,12 +22,12 @@ In some cases there are variables that are numeric until a threshold, and then t
 
 - For example, [`Age`](http://ncdbpuf.facs.org/content/age-diagnosis) is defined as:
 
- | value | label|
- |------|----|
- |0 | < 1 yr old including in utero|
- | 1 - 89 | numeric|
- | 90 | 90+ yrs old |
- | 999 | unknown |
+    | value  | label                         |
+    | ------ | ----------------------------- |
+    | 0      | < 1 yr old including in utero |
+    | 1 - 89 | numeric                       |
+    | 90     | 90+ yrs old                   |
+    | 999    | unknown                       |
  
 If you do not include `Age` in the `.levels_map_ignore`, the column will be converted to a factor and only 0, 90, 999 will be labeled, with everything else converted to "NA"
 
